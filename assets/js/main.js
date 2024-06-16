@@ -88,6 +88,10 @@ function EqualButton() {
 
 function SignButton(sign) {
   currentSign = sign;
+  if (oldNumber != "") {
+    EqualButton();
+  }
+
   oldNumber = currentNumber;
   currentNumber = "0";
   RefreshResult();
