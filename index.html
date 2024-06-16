@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple Calculator</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/myriad-font@0.0.2/css/myriad.min.css
+"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="calculator">
+      <div class="content">
+        <div class="result">
+          <span id="oldResult" class="oldResult">0</span>
+          <span id="text" class="text">0</span>
+        </div>
+        <div class="keyboard">
+          <div class="line">
+            <button data-type="func">AC</button>
+            <button data-type="func">+/-</button>
+            <button data-type="func">%</button>
+            <button data-type="sign">÷</button>
+          </div>
+          <div class="line">
+            <button data-type="num">7</button>
+            <button data-type="num">8</button>
+            <button data-type="num">9</button>
+            <button data-type="sign">×</button>
+          </div>
+          <div class="line">
+            <button data-type="num">4</button>
+            <button data-type="num">5</button>
+            <button data-type="num">6</button>
+            <button data-type="sign">-</button>
+          </div>
+          <div class="line">
+            <button data-type="num">1</button>
+            <button data-type="num">2</button>
+            <button data-type="num">3</button>
+            <button data-type="sign">+</button>
+          </div>
+          <div class="line">
+            <button class="double" data-type="num">0</button>
+            <button data-type="other">,</button>
+            <button data-type="equal">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
