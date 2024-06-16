@@ -8,6 +8,9 @@ This project is a faithful replica of Apple's calculator, built using modern web
 
 [Apple Calculator Web](https://zachary-masson.github.io/AppleCalculator/)
 
+![image](https://github.com/Zachary-Masson/AppleCalculator/assets/66486552/53378a20-d8f4-437e-a1af-2f33d03ef5e9)
+
+
 ## ✨ Features
 
 - 🖌️ User interface true to Apple's calculator app.
