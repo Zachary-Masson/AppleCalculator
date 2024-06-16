@@ -2,6 +2,7 @@
     .made {
         left: 15px;
         top: 15px;
+        bottom: 100%;
     }
 
     .made > a > img {
