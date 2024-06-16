@@ -136,6 +136,7 @@ function OnKeyPress(e) {
 }
 
 function OnButtonPress(e) {
+  e.preventDefault();
   switch (e.target.getAttribute("data-type")) {
     case "num":
       AddNumber(e.target.innerText);
