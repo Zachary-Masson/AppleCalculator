@@ -1,37 +1,45 @@
-const resultText = document.getElementById("text");
-const oldResultText = document.getElementById("oldResult");
-const buttons = document.querySelectorAll("button");
+// DOM elements selection
+const resultText = document.getElementById("text"); // Field to display the current result
+const oldResultText = document.getElementById("oldResult"); // Field to display the previous result
+const buttons = document.querySelectorAll("button"); // Selecting all buttons
 
-let oldNumber = "0";
-let currentNumber = "0";
-let currentSign = "";
+// Calculation variables
+let oldNumber = "0"; // Previous number
+let currentNumber = "0"; // Current number
+let currentSign = ""; // Current operator
 
-let isEqual = false;
+let isEqual = false; // Indicates whether the equal button has been pressed
 
+// Keyboard event
 document.addEventListener("keydown", OnKeyPress);
 
+// Adding event listeners to buttons
 buttons.forEach((btn) => btn.addEventListener("click", OnButtonPress));
 
+/**
+ * Refreshes the result display
+ */
 function RefreshResult() {
-  if (oldNumber === "0") oldResultText.style.opacity = "0";
-  else oldResultText.style.opacity = "1";
-
+  oldResultText.style.opacity = oldNumber === "0" ? "0" : "1";
   resultText.innerText = currentNumber;
-  if (isEqual) oldResultText.innerText = oldNumber;
-  else oldResultText.innerText = oldNumber + ` ${currentSign}`;
+  oldResultText.innerText = isEqual ? oldNumber : oldNumber + ` ${currentSign}`;
 }
 
 /**
- * Function for add number in currebtNumber
- * @param {Number} number
+ * Function to add a number to currentNumber
+ * @param {number} number - The number to add
  */
 function AddNumber(number) {
-  if (currentNumber.length > 7) return;
-  if (currentNumber !== "0") currentNumber += number.toString();
-  else currentNumber = number.toString();
+  if (currentNumber.length > 7) return; // Limits the number of digits
+  currentNumber =
+    currentNumber === "0" ? number.toString() : currentNumber + number;
   RefreshResult();
 }
 
+/**
+ * Function to handle function buttons
+ * @param {string} func - The function to execute (AC, +/-, %)
+ */
 function FunctionButton(func) {
   switch (func) {
     case "AC":
@@ -41,17 +49,19 @@ function FunctionButton(func) {
       break;
 
     case "+/-":
-      currentNumber = (-parseFloat(currentNumber)).toString();
+      currentNumber = `-${currentNumber}`;
       break;
 
     case "%":
-      currentNumber = parseFloat(currentNumber) / 100;
+      currentNumber = (parseFloat(currentNumber) / 100).toString();
       break;
   }
-
   RefreshResult();
 }
 
+/**
+ * Function to handle the equal button
+ */
 function EqualButton() {
   if (currentSign === "") return;
 
@@ -86,19 +96,22 @@ function EqualButton() {
   isEqual = false;
 }
 
+/**
+ * Function to handle operator buttons
+ * @param {string} sign - The operator (+, -, ×, ÷)
+ */
 function SignButton(sign) {
   currentSign = sign;
-  if (oldNumber != "") {
-    EqualButton();
-  }
-
   oldNumber = currentNumber;
   currentNumber = "0";
   RefreshResult();
 }
 
+/**
+ * Handles keyboard key press events
+ * @param {KeyboardEvent} e - The key press event
+ */
 function OnKeyPress(e) {
-  console.log(e);
   if (!isNaN(parseFloat(e.key))) {
     AddNumber(parseFloat(e.key));
   }
@@ -139,19 +152,25 @@ function OnKeyPress(e) {
   }
 }
 
+/**
+ * Handles button click events
+ * @param {MouseEvent} e - The button click event
+ */
 function OnButtonPress(e) {
-  e.preventDefault();
-  switch (e.target.getAttribute("data-type")) {
+  const { target } = e;
+  const dataType = target.getAttribute("data-type");
+
+  switch (dataType) {
     case "num":
-      AddNumber(e.target.innerText);
+      AddNumber(parseFloat(target.innerText));
       break;
 
     case "func":
-      FunctionButton(e.target.innerText);
+      FunctionButton(target.innerText);
       break;
 
     case "sign":
-      SignButton(e.target.innerText);
+      SignButton(target.innerText);
       break;
 
     case "other":

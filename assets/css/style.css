@@ -132,7 +132,7 @@ body {
 
 #calculator > .content > .keyboard > .line > button {
     width: 60px;
-    height: 60px;
+    aspect-ratio: 1/1;
 
     border-radius: 100%;
 

@@ -1,0 +1,51 @@
+@media only screen and (max-width: 500px) {
+    .made {
+        left: 15px;
+        top: 15px;
+    }
+
+    .made > a > img {
+        width: 200px;
+    }
+    
+    .watchers {
+        right: 15px;
+        top: 15px;
+    }
+    
+    #calculator {
+        background-image: none;
+        height: 100vh;
+        max-height: 930px;
+        width: 100vh;
+        background-color: var(--black);
+    }
+
+    #calculator::before {
+        display: none;
+    }
+
+    #calculator > .content {
+        height: calc(100% - 20px);
+        margin: 0 0;
+    }
+
+    #calculator > .content > .result {
+        height: 600px;
+        margin-right: 60px;
+    }
+
+    #calculator > .content > .keyboard > .line {
+        gap: 20px;
+    }
+
+    #calculator > .content > .keyboard > .line > button {
+        width: 75px;
+    }
+
+    #calculator > .content > .keyboard > .line > button.double {
+        width: 170px;
+        height: 75px;
+        border-radius: 60px;
+    }
+}
